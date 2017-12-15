@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+    <script src="../build/jquery.min.js"></script>
+</body>
+<div id="tx"></div>
+<script type="text/babel">
+    var MyDemo=React.createClass({
+        getInitialState(){
+            return {
+                username:'',
+                urll:''
+            }
+        },
+        componentDidMount(){
+            $.get(this.props.source,function name(res) {
+                console.log(res)
+                var arr =res[0];
+                this.setState({username:arr.owner.login,urll:arr.url})
+            
+            }.bind(this));               
+        },
+        render(){
+            return(
+            <div>{this.state.username} is last <a href={this.state.urll}>bbbb</a></div>
+                
+            )
+        }
+    })
+    ReactDOM.render(
+        <MyDemo source="https://api.github.com/users/octocat/gists"/ >,document.getElementById("tx")
+    )
+</script>
+</html>

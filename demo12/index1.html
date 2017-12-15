@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+    <script src="../build/jquery.min.js"></script>
+</head>
+<body>
+    <div id="ex">
+    </div>
+    <script type="text/babel">
+     var MyDemo=React.createClass({
+        getInitialState(){
+            return{
+                loading:true,
+             err:null,
+             data:null
+
+            };
+             
+         },
+         componentDidMount(){
+            this.props.promise.then(
+                value=>this.setState({loading:false,data:value}),
+                error => this.setState({loading: false, error: error})
+            )
+         },
+         render(){
+             if(this.state.loading){
+                return <span>loading....</span>
+             }else if(this.state.err!==null){
+                return <span>Error:{this.state.error.message}</span>
+             }
+             else{
+
+            var rep=this.state.data.items;
+             var repList=rep.map(function name( item,index) 
+              {
+             return(
+                  
+                 <li key={index}> 
+                 <a href={item.html_url}>{item.name}</a>{item.description}</li>
+                 );   });
+                 return(
+                 <main>
+                 <h1>这是渲染出来的</h1>
+                 <ol>{repList}</ol>
+                 </main>
+             );
+             }
+         
+         }
+     })
+     ReactDOM.render(
+        <MyDemo promise={$.getJSON('https://api.github.com/search/repositories?q=javascript&sort=stars')}/>,
+        document.getElementById("ex")
+     )
+    </script>
+</body>
+</html>

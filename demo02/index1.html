@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+</head>
+<body>
+   
+    <div id="ex"></div>
+    <script type="text/babel">
+     var name=["lili","hehe","heihei"]
+        ReactDOM.render(
+           <div>
+           {
+               name.map(function demo(name,index) {
+                   return <h1 key={index}>你叫什么{name}</h1>
+               })
+           }
+           </div>,
+           document.getElementById("ex")
+        )
+    </script>
+</body>
+</html>

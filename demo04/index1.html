@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+</head>
+
+<body>
+<div id="ex"></div>
+    <script type="text/babel">
+          var Hello = React.createClass({
+        render() {
+            return <h2>hello {this.props.name}</h2>;
+        }
+        });
+        ReactDOM.render(
+            <Hello name="liutuo"/>,
+            document.getElementById("ex")
+        );
+    // var HelloMessage = React.createClass({
+    //     render: function() {
+    //       return <h1>Hello {this.props.name}</h1>;
+    //     }
+    //   });
+
+    //   ReactDOM.render(
+    //     <HelloMessage name="John" />,
+    //     document.getElementById('ex')
+    //   );
+    </script>
+  
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+</head>
+<body>
+    <div id="ex"></div>
+    <script type="text/babel">
+    var Mydemo=React.createClass({
+        getInitialState(){
+            return {like:false};
+
+        },
+        HClick(){
+            this.setState({like:!this.state.like})
+        },
+        render(){
+            var text=this.state.like?"喜欢":"不喜欢";
+            
+            return (
+           <p onClick={this.HClick}>you{text}me</p> 
+
+            )
+            
+        }
+    })
+    ReactDOM.render(
+        <Mydemo/>,
+        document.getElementById("ex")
+    )
+    </script>
+</body>
+</html>

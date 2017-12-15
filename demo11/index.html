@@ -19,6 +19,7 @@ var UserGist = React.createClass({
 
   componentDidMount: function() {
     $.get(this.props.source, function(result) {
+      console.log(result)
       var lastGist = result[0];
       if (this.isMounted()) {
         this.setState({
